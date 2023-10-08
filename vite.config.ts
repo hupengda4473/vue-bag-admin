@@ -57,6 +57,10 @@ export default ({mode}: { mode: any }) => {
                     rewrite: (path: any) => path.replace(/^\/bic/, "")
                 },
             }
-        }
+        },
+        define: {
+            __NEXT_VERSION__: JSON.stringify(process.env.npm_package_version),
+            __NEXT_NAME__: JSON.stringify(process.env.npm_package_name),
+        },
     })
 }

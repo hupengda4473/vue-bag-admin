@@ -1,7 +1,11 @@
 import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig} from "axios"
 import axiosRetry from "axios-retry"
+import { Session } from '@/packages/utils/storage';
 
 const http: AxiosInstance = axios.create({
+    // baseURL: requestUrl,
+    // timeout: 50000,
+    // headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
 })
 
@@ -12,6 +16,10 @@ axiosRetry(http, {
 })
 
 http.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    const token = Session.get('token');
+    if (token) {
+        config.headers["Authorization"] = `token= ${token}`;
+    }
     return config
 }, (error: AxiosError) => {
     return Promise.reject(error)

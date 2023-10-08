@@ -106,6 +106,7 @@ function updateRouterAll(to: RouteLocationNormalized, from: RouteLocationNormali
         next()
     } else {
         getMenus().then((res) => {
+            console.log(res);
             const {menus} = appStore.configOptions
             const allMenus = unionWith(res.data, menus)
             appStore.allMenus = allMenus.map((item) => {
