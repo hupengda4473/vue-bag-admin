@@ -60,6 +60,7 @@ createApp(App).use(install).use(router).mount('#app')
 - 权限拦截
 - 多页面模式
 - 动态路由注入
+- less样式表
 - ......
 
 

@@ -272,6 +272,9 @@ export default defineComponent({
                     locaStore.clearAll()
                     router.push("/login")
                 }
+                if(key === "stmt3"){
+                    router.push("/demo")
+                }
             }
         })
         return {
